@@ -11,7 +11,6 @@ variable "cs" {
   default = "groupc"
 }
 
-
 variable "tid" {
   default = "groupc"
 }
@@ -23,10 +22,14 @@ provider "azurerm" {
     tenant_id       = "${var.tid}"
 }
 
+variable "prefix" {
+  default = "groupc"
+}
 
-resource "azurerm_resource_group" "myterraformgroup" {
-    name     = "eurgdemo"
-    location = "eastus"
+
+resource "azurerm_resource_group" "azure_rg" {
+    name     = "${var.prefix}-rgdemo"
+    location = "Central US"
 
     tags = {
         environment = "Terraform Demo"
